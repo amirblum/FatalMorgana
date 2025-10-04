@@ -8,13 +8,23 @@ class_name Collectable
 @export var water_value: float = 5.0
 @export var float_amplitude: float = 10.0
 @export var float_speed: float = 2.0
+@export var hp: int = 3
+@export var hover_scale_multiplier: float = 1.2
 
 var collected: bool = false
+var current_hp: int = 0
 var time_alive: float = 0.0
 var base_y: float = 0.0
+var base_scale: Vector2 = Vector2.ONE
 
 func _ready():
 	add_to_group("collectable")
+	
+	# Initialize HP
+	current_hp = hp
+	
+	# Store base scale for hover effects
+	base_scale = sprite.scale
 		
 	# Connect GameManager signals
 	GameManager.distance_updated.connect(_on_distance_updated)
@@ -56,19 +66,33 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			print("Clicked collectable")
 			if not collected:
-				collect()
+				take_damage()
 
 func _on_mouse_entered():
-	# Visual feedback: scale up slightly when hovering
+	# Visual feedback: scale up when hovering
 	if not collected:
 		var tween = create_tween()
-		tween.tween_property(sprite, "scale", Vector2(1.2, 1.2), 0.1)
+		tween.tween_property(sprite, "scale", base_scale * hover_scale_multiplier, 0.1)
 
 func _on_mouse_exited():
-	# Return to normal scale
+	# Return to base scale
 	if not collected:
 		var tween = create_tween()
-		tween.tween_property(sprite, "scale", Vector2(1.0, 1.0), 0.1)
+		tween.tween_property(sprite, "scale", base_scale, 0.1)
+
+func take_damage():
+	if collected:
+		return
+	
+	current_hp -= 1
+	print("Collectable took damage! HP: ", current_hp)
+	
+	# Visual feedback for taking damage
+	play_damage_animation()
+	
+	# Check if HP reached 0
+	if current_hp <= 0:
+		collect()
 
 func collect():
 	if collected:
@@ -84,6 +108,16 @@ func collect():
 	
 	# Play sound effect (if you have one)
 	# $AudioStreamPlayer2D.play()
+
+func play_damage_animation():
+	# Quick flash effect when taking damage
+	var tween = create_tween()
+	tween.set_parallel(true)
+	
+	# Flash red briefly
+	tween.tween_property(sprite, "modulate", Color.RED, 0.1)
+	tween.tween_property(sprite, "modulate", Color.WHITE, 0.1).set_delay(0.1)
+	
 
 func play_collect_animation():
 	# Emit particles

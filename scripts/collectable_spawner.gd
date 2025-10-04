@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var collectable_scene: PackedScene
+@export var collectable_scenes: Array[PackedScene] = []
+@export var spawn_weights: Array[float] = []  # Optional weights for each collectable type
 @export var spawn_interval: float = 2.0
 @export var spawn_variance: float = 1.0
 @export var spawn_height_range: float = 300.0  # Vertical range for spawns
@@ -18,6 +19,13 @@ func _ready():
 	var viewport_size = get_viewport_rect().size
 	screen_width = viewport_size.x
 	screen_height = viewport_size.y
+	
+	# Initialize spawn weights if not set
+	if spawn_weights.is_empty() and not collectable_scenes.is_empty():
+		# Equal weights for all collectables
+		spawn_weights.resize(collectable_scenes.size())
+		for i in range(spawn_weights.size()):
+			spawn_weights[i] = 1.0
 
 func _process(delta: float):
 	if not GameManager.is_running or GameManager.is_paused:
@@ -38,9 +46,35 @@ func _process(delta: float):
 		if collectables_spawned % 10 == 0:
 			difficulty_multiplier = min(difficulty_multiplier + 0.1, 2.0)
 
+func get_random_collectable_scene() -> PackedScene:
+	# Return a random collectable scene based on weights
+	if collectable_scenes.is_empty():
+		push_error("No collectable scenes assigned to spawner!")
+		return null
+	
+	if spawn_weights.is_empty() or spawn_weights.size() != collectable_scenes.size():
+		# Fallback to equal probability
+		return collectable_scenes[randi() % collectable_scenes.size()]
+	
+	# Weighted random selection
+	var total_weight = 0.0
+	for weight in spawn_weights:
+		total_weight += weight
+	
+	var random_value = randf() * total_weight
+	var current_weight = 0.0
+	
+	for i in range(collectable_scenes.size()):
+		current_weight += spawn_weights[i]
+		if random_value <= current_weight:
+			return collectable_scenes[i]
+	
+	# Fallback (shouldn't reach here)
+	return collectable_scenes[0]
+
 func spawn_collectable():
+	var collectable_scene = get_random_collectable_scene()
 	if not collectable_scene:
-		push_error("Collectable scene not assigned to spawner!")
 		return
 	
 	var collectable = collectable_scene.instantiate()
@@ -72,6 +106,10 @@ func spawn_pattern_line():
 func spawn_pattern_wave():
 	# Spawn collectables in a sine wave pattern
 	for i in range(5):
+		var collectable_scene = get_random_collectable_scene()
+		if not collectable_scene:
+			continue
+			
 		var collectable = collectable_scene.instantiate()
 		add_child(collectable)
 		

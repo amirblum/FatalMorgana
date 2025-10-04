@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc0kv7mhsqe80"]
+
+[ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/base_collectable.tscn" id="1_pgraa"]
+
+[node name="Collectable" instance=ExtResource("1_pgraa")]
+water_value = 2.0
+hp = 1
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2(0.40625, 0.40625)
