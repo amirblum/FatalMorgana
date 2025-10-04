@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://8yl3nxc1yyf5"]
+
+[ext_resource type="Script" uid="uid://baqqne7002r71" path="res://scripts/water_meter.gd" id="1_nwalk"]
+
+[node name="WaterMeter" type="Control"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_nwalk")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WaterLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+offset_right = 117.0
+offset_bottom = -77.0
+grow_vertical = 0
+text = "Water: 100/100"

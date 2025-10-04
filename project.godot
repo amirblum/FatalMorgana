@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="LD58"
-run/main_scene="uid://dwkd2txek61ka"
+run/main_scene="uid://cxdp0ygjeeag3"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/autoload/game_manager.gd"
+
+[display]
+
+window/stretch/mode="viewport"
 
 [editor]
 

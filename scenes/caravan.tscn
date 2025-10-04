@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://cejgnughwon1u"]
+
+[ext_resource type="Script" uid="uid://djyqo1ie7d0p3" path="res://scripts/caravan.gd" id="1_ql6k1"]
+
+[sub_resource type="Gradient" id="Gradient_05eb2"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aywv8"]
+gradient = SubResource("Gradient_05eb2")
+width = 200
+height = 75
+
+[sub_resource type="Gradient" id="Gradient_xf0bo"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xtohp"]
+gradient = SubResource("Gradient_xf0bo")
+
+[sub_resource type="Gradient" id="Gradient_e10tr"]
+colors = PackedColorArray(0.34901962, 0, 0, 1, 0.34901962, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0dxfj"]
+gradient = SubResource("Gradient_e10tr")
+
+[node name="Caravan" type="Node2D"]
+script = ExtResource("1_ql6k1")
+
+[node name="CaravanSprite" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_aywv8")
+
+[node name="UpgradeVisuals" type="Node2D" parent="."]
+
+[node name="TarpSprite" type="Sprite2D" parent="UpgradeVisuals"]
+position = Vector2(-53.000008, -45)
+scale = Vector2(1.921875, 0.390625)
+texture = SubResource("GradientTexture2D_xtohp")
+
+[node name="ScoutCamelSprite" type="Sprite2D" parent="UpgradeVisuals"]
+
+[node name="ExtraJarsSprite" type="Sprite2D" parent="UpgradeVisuals"]
+position = Vector2(62, 14)
+scale = Vector2(1, 0.421875)
+texture = SubResource("GradientTexture2D_0dxfj")

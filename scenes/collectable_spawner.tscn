@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcpu37jg0rc1v"]
+
+[ext_resource type="Script" uid="uid://bgkh1y1w76khu" path="res://scripts/collectable_spawner.gd" id="1_i7vic"]
+[ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectable.tscn" id="2_hl1l7"]
+
+[node name="CollectableSpawner" type="Node2D"]
+script = ExtResource("1_i7vic")
+collectable_scene = ExtResource("2_hl1l7")
