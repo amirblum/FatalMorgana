@@ -5,11 +5,10 @@ extends Node2D
 func _ready():
 	print("Game Started!")
 	print("GameManager accessible: ", GameManager != null)
-	GameManager.start_new_run()
-	
 	# Connect signal
 	GameManager.water_changed.connect(_on_water_changed)
+	GameManager.start_new_run()
 
-func _on_water_changed(new_water: float):
-	water_meter.update_water(new_water, GameManager.max_water)
+func _on_water_changed(new_water: float, maximum: float):
+	water_meter.update_water(new_water, maximum)
 	print("Water: ", new_water)
