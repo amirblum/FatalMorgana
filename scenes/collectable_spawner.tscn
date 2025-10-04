@@ -9,3 +9,5 @@
 script = ExtResource("1_i7vic")
 collectable_scenes = Array[PackedScene]([ExtResource("2_rgjj4"), ExtResource("3_125mb"), ExtResource("4_vll1x")])
 spawn_weights = Array[float]([1.0, 0.5, 3.0])
+spawn_interval = 1.5
+spawn_variance = 0.5

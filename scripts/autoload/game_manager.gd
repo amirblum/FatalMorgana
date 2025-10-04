@@ -12,8 +12,8 @@ var is_running: bool = false
 var is_paused: bool = false
 
 # ===== WATER SYSTEM =====
-var current_water: float = 100.0
-var max_water: float = 100.0
+var current_water: float = 50.0
+var max_water: float = 30.0
 var water_drain_rate: float = 2.0  # Water lost per second
 
 # ===== PROGRESSION =====
@@ -33,8 +33,7 @@ func start_new_run():
 	
 	# Reset run state
 	distance_traveled = 0.0
-	current_water = 100.0
-	max_water = 100.0
+	current_water = max_water
 	visual_stage = 0
 	
 	# Start game

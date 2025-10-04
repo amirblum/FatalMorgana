@@ -6,8 +6,8 @@
 size = Vector2(59, 172)
 
 [node name="Collectable" instance=ExtResource("1_5oqcl")]
-water_value = 8.0
-hp = 6
+water_value = 5.0
+hp = 15
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2(0.5, 1.390625)

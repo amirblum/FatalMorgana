@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/base_collectable.tscn" id="1_pgraa"]
 
 [node name="Collectable" instance=ExtResource("1_pgraa")]
-water_value = 2.0
+water_value = 0.5
 hp = 1
 
 [node name="Sprite" parent="." index="0"]
