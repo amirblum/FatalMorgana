@@ -5,7 +5,7 @@ extends ParallaxBackground
 @onready var dunes_front = $DunesFrontLayer if has_node("DunesFrontLayer") else null
 @onready var vegetation_layer = $VegetationLayer if has_node("VegetationLayer") else null
 
-var scroll_speed: float = 100.0
+var scroll_speed: float = 0.0
 var current_stage: int = -1  # Track to avoid redundant updates
 
 func _ready():
