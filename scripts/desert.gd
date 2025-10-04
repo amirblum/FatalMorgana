@@ -5,19 +5,17 @@ extends ParallaxBackground
 @onready var dunes_front = $DunesFrontLayer if has_node("DunesFrontLayer") else null
 @onready var vegetation_layer = $VegetationLayer if has_node("VegetationLayer") else null
 
-var scroll_speed: float = 0.0
+var scroll_multiplier: float = 0.0
 var current_stage: int = -1  # Track to avoid redundant updates
 
 func _ready():
 	# Initial stage setup
 	update_stage(0)
-
-func _process(delta: float):
-	if not GameManager.is_running or GameManager.is_paused:
-		return
+	GameManager.distance_updated.connect(_on_distance_updated)
 	
+func _on_distance_updated(amount:float, total_distance: float):	
 	# Scroll background
-	scroll_offset.x -= scroll_speed * delta
+	scroll_offset.x -= amount * scroll_multiplier
 	
 	# Check if stage changed
 	var new_stage = GameManager.visual_stage

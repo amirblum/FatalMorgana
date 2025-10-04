@@ -5,7 +5,7 @@ signal water_changed(new_value: float, max_value: float)
 signal water_depleted()
 signal game_over()
 signal game_won()
-signal distance_updated(distance: float)
+signal distance_updated(amount: float, total_distance: float)
 
 # ===== GAME STATE =====
 var is_running: bool = false
@@ -17,6 +17,7 @@ var max_water: float = 100.0
 var water_drain_rate: float = 2.0  # Water lost per second
 
 # ===== PROGRESSION =====
+var progression_speed: float = 100.0
 var distance_traveled: float = 0.0
 var win_distance: float = 3000.0  # Distance needed to win
 
@@ -42,7 +43,7 @@ func start_new_run():
 	
 	# Emit initial signals
 	water_changed.emit(current_water, max_water)
-	distance_updated.emit(distance_traveled)
+	distance_updated.emit(0.0, distance_traveled)
 
 func pause_game():
 	is_paused = true
@@ -73,7 +74,7 @@ func _process(delta: float):
 	change_water(-water_drain_rate * delta)
 	
 	# Update distance (simulates caravan moving)
-	add_distance(100.0 * delta)  # 100 pixels per second
+	add_distance(progression_speed * delta)  # 100 pixels per second
 	
 	# Check lose condition
 	if current_water <= 0:
@@ -95,7 +96,7 @@ func change_water(amount: float):
 # ===== DISTANCE/PROGRESSION =====
 func add_distance(amount: float):
 	distance_traveled += amount
-	distance_updated.emit(distance_traveled)
+	distance_updated.emit(amount, distance_traveled)
 	
 	# Check for visual stage changes
 	update_visual_stage()
@@ -114,11 +115,11 @@ func update_visual_stage():
 
 func get_stage_from_distance() -> int:
 	if distance_traveled < 1000:
-		return 0  # Barren desert
+		return 0  # Lush oasis
 	elif distance_traveled < 2000:
 		return 1  # Sparse vegetation
 	else:
-		return 2  # Lush oasis approach
+		return 2  # Barren desert
 
 # ===== HELPER FUNCTIONS =====
 func get_water_percentage() -> float:

@@ -15,9 +15,9 @@ var base_y: float = 0.0
 
 func _ready():
 	add_to_group("collectable")
-	
-	# Enable input detection - THIS IS KEY FOR CLICKING
-	input_pickable = true
+		
+	# Connect GameManager signals
+	GameManager.distance_updated.connect(_on_distance_updated)
 	
 	# Connect click signal
 	input_event.connect(_on_input_event)
@@ -31,6 +31,11 @@ func _ready():
 	if animation and animation.has_animation("float"):
 		animation.play("float")
 
+func _on_distance_updated(amount:float, total_distance: float):
+	# Move left to simulate caravan moving right
+	global_position.x -= amount
+	
+		
 func _process(delta: float):
 	if collected:
 		return
@@ -38,10 +43,8 @@ func _process(delta: float):
 	time_alive += delta
 	
 	# Smooth floating animation
-	global_position.y = base_y + sin(time_alive * float_speed) * float_amplitude
-	
-	# Move left to simulate caravan moving right
-	global_position.x -= 100.0 * delta
+	if not animation:
+		global_position.y = base_y + sin(time_alive * float_speed) * float_amplitude
 	
 	# Despawn if off-screen (left side)
 	if global_position.x < -100:
@@ -51,6 +54,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 	# Detect mouse click
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			print("Clicked collectable")
 			if not collected:
 				collect()
 
@@ -102,11 +106,3 @@ func play_collect_animation():
 	
 	# Destroy after animation
 	tween.tween_callback(queue_free).set_delay(0.4)
-
-# Optional: Make collectables more valuable if clicked quickly after spawning
-func get_bonus_multiplier() -> float:
-	if time_alive < 1.0:
-		return 1.5  # 50% bonus for quick collection
-	elif time_alive < 2.0:
-		return 1.2  # 20% bonus
-	return 1.0

@@ -48,7 +48,7 @@ func spawn_collectable():
 	
 	# Spawn position: right side of screen, random height
 	var spawn_x = screen_width + 50
-	var spawn_y = (screen_height / 2) + randf_range(-spawn_height_range / 2, spawn_height_range / 2)
+	var spawn_y = global_position.y + randf_range(-spawn_height_range / 2, spawn_height_range / 2)
 	
 	# Keep within screen bounds with margin
 	spawn_y = clamp(spawn_y, 50, screen_height - 50)
