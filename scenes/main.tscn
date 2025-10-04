@@ -19,7 +19,7 @@ transform = Transform2D(28.8, 0, 0, 13.7, 0, 0)
 position = Vector2(133, 440)
 
 [node name="CollectableSpawner" parent="PlayArea" instance=ExtResource("3_tefeu")]
-position = Vector2(1220, 433)
+position = Vector2(1179, 448)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
