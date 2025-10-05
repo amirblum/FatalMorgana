@@ -125,3 +125,14 @@ func spawn_pattern_wave():
 		collectable.global_position = Vector2(spawn_x, spawn_y)
 		
 		await get_tree().create_timer(0.1).timeout
+
+func clear_all_collectables():
+	# Remove all existing collectable children
+	for child in get_children():
+		if child.is_in_group("collectable"):
+			child.queue_free()
+	
+	# Reset spawner state
+	spawn_timer = 0.0
+	collectables_spawned = 0
+	difficulty_multiplier = 1.0

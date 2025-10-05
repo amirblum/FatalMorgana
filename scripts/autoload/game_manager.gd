@@ -43,6 +43,15 @@ func initialize_ui():
 func start_new_run():
 	print("Starting new run...")
 	
+	# Clear existing collectables
+	var collectable_spawner = get_tree().get_first_node_in_group("collectable_spawner")
+	if not collectable_spawner:
+		# Fallback: find by node path
+		collectable_spawner = get_tree().get_first_node_in_group("main").get_node("PlayArea/CollectableSpawner")
+	
+	if collectable_spawner and collectable_spawner.has_method("clear_all_collectables"):
+		collectable_spawner.clear_all_collectables()
+	
 	# Reset run state
 	distance_traveled = 0.0
 	current_water = max_water

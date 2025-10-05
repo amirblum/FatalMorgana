@@ -15,7 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cknlpwxvyb6dx" path="res://sounds/night in the desert.mp3" id="12_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://dps4v28qlsarw" path="res://scenes/startup_message.tscn" id="13_startup"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["main"]]
 script = ExtResource("1_jyhfs")
 
 [node name="Desert" parent="." instance=ExtResource("2_tbgi4")]
