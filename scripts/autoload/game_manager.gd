@@ -13,13 +13,13 @@ var is_paused: bool = false
 
 # ===== WATER SYSTEM =====
 var current_water: float = 50.0
-var max_water: float = 30.0
-var water_drain_rate: float = 2.0  # Water lost per second
+var max_water: float = 20.0
+var water_drain_rate: float = 1.0  # Water lost per second
 
 # ===== PROGRESSION =====
-var progression_speed: float = 100.0
+var progression_speed: float = 50.0
 var distance_traveled: float = 0.0
-var win_distance: float = 3000.0  # Distance needed to win
+var win_distance: float = 5000.0  # Distance needed to win
 
 # ===== VISUAL STAGES =====
 var visual_stage: int = 0  # 0=barren, 1=sparse, 2=lush
