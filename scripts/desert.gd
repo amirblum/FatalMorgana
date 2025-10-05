@@ -5,23 +5,23 @@ extends ParallaxBackground
 @onready var dunes_front = $DunesFrontLayer if has_node("DunesFrontLayer") else null
 @onready var vegetation_layer = $VegetationLayer if has_node("VegetationLayer") else null
 
-var scroll_multiplier: float = 0.0
+var scroll_multiplier: float = 0.1
 var current_stage: int = -1  # Track to avoid redundant updates
 
 func _ready():
 	# Initial stage setup
-	update_stage(0)
+	# update_stage(0)
 	GameManager.distance_updated.connect(_on_distance_updated)
 	
-func _on_distance_updated(amount:float, total_distance: float):	
+func _on_distance_updated(_amount:float, total_distance: float):	
 	# Scroll background
-	scroll_offset.x -= amount * scroll_multiplier
+	scroll_offset.x = -total_distance * scroll_multiplier
 	
 	# Check if stage changed
 	var new_stage = GameManager.visual_stage
 	if new_stage != current_stage:
 		current_stage = new_stage
-		update_stage(new_stage)
+		# update_stage(new_stage)
 
 func update_stage(stage: int):
 	print("Desert updating to stage: ", stage)
@@ -58,9 +58,9 @@ func update_stage(stage: int):
 				modulate_layer(vegetation_layer, Color(1.0, 1.0, 1.0, 1.0))  # Fully visible
 
 # Helper function to modulate a layer's children
-func modulate_layer(layer: ParallaxLayer, color: Color):
+func modulate_layer(paralaxLayer: ParallaxLayer, color: Color):
 	# Modulate all sprites/visuals in the layer
-	for child in layer.get_children():
+	for child in paralaxLayer.get_children():
 		if child is CanvasItem:  # Sprite2D, ColorRect, etc.
 			child.modulate = color
 

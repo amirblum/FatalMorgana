@@ -7,19 +7,21 @@ script = ExtResource("1_1v2dw")
 
 [node name="SkyLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(200, 0)
 
 [node name="ColorRect" type="ColorRect" parent="SkyLayer"]
-offset_right = 40.0
+offset_right = 200.0
 offset_bottom = 40.0
 mouse_filter = 2
 color = Color(0.96862745, 0.6666667, 0.38431373, 1)
 
 [node name="DunesBackLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 1)
+motion_mirroring = Vector2(150, 0)
 
 [node name="ColorRect" type="ColorRect" parent="DunesBackLayer"]
 offset_top = 16.0
-offset_right = 40.0
+offset_right = 150.0
 offset_bottom = 40.0
 mouse_filter = 2
 color = Color(0.81960785, 0.44705883, 0.3764706, 1)
@@ -27,33 +29,35 @@ color = Color(0.81960785, 0.44705883, 0.3764706, 1)
 [node name="ColorRect2" type="ColorRect" parent="DunesBackLayer"]
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 40.0
+offset_right = 150.0
 offset_bottom = 34.0
 mouse_filter = 2
 color = Color(0.81960785, 0.44705883, 0.3764706, 1)
 
 [node name="DunesFrontLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(100, 0)
 
 [node name="ColorRect" type="ColorRect" parent="DunesFrontLayer"]
 offset_top = 25.0
-offset_right = 40.0
+offset_right = 100.0
 offset_bottom = 40.0
 mouse_filter = 2
 color = Color(0.4745098, 0.30980393, 0.31764707, 1)
 
 [node name="ColorRect2" type="ColorRect" parent="DunesFrontLayer"]
 offset_top = 23.0
-offset_right = 16.0
+offset_right = 70.0
 offset_bottom = 38.0
 mouse_filter = 2
 color = Color(0.4745098, 0.30980393, 0.31764707, 1)
 
 [node name="VegetationLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(59, 0)
 
 [node name="ColorRect" type="ColorRect" parent="VegetationLayer"]
 offset_top = 32.0
-offset_right = 40.0
+offset_right = 59.0
 offset_bottom = 40.0
 mouse_filter = 2
 color = Color(0.21960784, 0.2, 0.1882353, 1)
