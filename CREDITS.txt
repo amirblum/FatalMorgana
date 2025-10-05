@@ -2,7 +2,8 @@
 
 Code: Amir Blum — MIT License
 Art: [List what you made yourself, and what you sourced]
-Music/SFX: [List sources if used, with licenses]
+Music/SFX: 
+https://opengameart.org/content/night-in-the-desert
 
 Unless otherwise noted, original art and audio in this project are licensed under
 Creative Commons Attribution 4.0 (CC BY 4.0).

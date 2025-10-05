@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cknlpwxvyb6dx"
+path="res://.godot/imported/night in the desert.mp3-efe10bd4f035748a7711379d9b7a6274.mp3str"
+
+[deps]
+
+source_file="res://sounds/night in the desert.mp3"
+dest_files=["res://.godot/imported/night in the desert.mp3-efe10bd4f035748a7711379d9b7a6274.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
