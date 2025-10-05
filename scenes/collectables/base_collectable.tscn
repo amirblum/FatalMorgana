@@ -16,7 +16,8 @@ size = Vector2(130, 130)
 script = ExtResource("1_5axqd")
 water_value = 3.0
 hp = 5
-highlight_color = Color(0.7315609, 0.6266706, 0, 1)
+highlight_color = Color(1, 0.85, 0, 1)
+damage_color = Color(0, 0.4333334, 1, 1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)

@@ -10,6 +10,7 @@ class_name Collectable
 @export var float_speed: float = 2.0
 @export var hp: int = 3
 @export var highlight_color: Color = Color.YELLOW
+@export var damage_color: Color = Color.RED
 @export var outline_size: float = 2.0
 
 var collected: bool = false
@@ -125,8 +126,8 @@ func play_damage_animation():
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
-	# Flash red outline briefly
-	tween.tween_method(_set_outline_color, Color.RED, base_outline_color, 0.2)
+	# Flash damage color outline briefly
+	tween.tween_method(_set_outline_color, damage_color, base_outline_color, 0.2)
 	tween.tween_method(_set_outline_size, outline_size, base_outline_size, 0.2)
 	
 	# After damage animation, restore hover state if mouse is still hovering
