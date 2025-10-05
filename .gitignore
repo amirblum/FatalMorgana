@@ -17,4 +17,8 @@ exports/
 data_*/
 mono_crash.*.json
 
+# IDEs
+.vscode/
+.idea/
+
 movies/
