@@ -24,7 +24,7 @@ transform = Transform2D(28.8, 0, 0, 13.7, 0, 0)
 position = Vector2(286, 439)
 
 [node name="CollectableSpawner" parent="PlayArea" instance=ExtResource("3_tefeu")]
-position = Vector2(1172, 492)
+position = Vector2(2200, 505)
 collectable_scenes = Array[PackedScene]([ExtResource("5_choun"), ExtResource("6_ya4ey"), ExtResource("7_eb6dy"), ExtResource("8_trceg"), ExtResource("9_a8y0u")])
 spawn_weights = Array[float]([3.0, 3.0, 1.0, 0.5, 0.5])
 
