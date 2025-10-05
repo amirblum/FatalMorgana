@@ -95,12 +95,6 @@ func spawn_collectable():
 	
 	collectable.global_position = Vector2(spawn_x, spawn_y)
 	
-	# Optional: Vary water value based on difficulty
-	if collectables_spawned > 20:
-		# Occasionally spawn high-value collectables
-		if randf() < 0.2:
-			collectable.water_value = 10.0
-			collectable.sprite.modulate = Color(0.5, 0.8, 1.0)  # Brighter blue
 
 # Optional: Spawn patterns (call this instead of spawn_collectable for variety)
 func spawn_pattern_line():
