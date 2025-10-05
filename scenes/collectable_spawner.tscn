@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bgkh1y1w76khu" path="res://scripts/collectable_spawner.gd" id="1_i7vic"]
 [ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectables/base_collectable.tscn" id="2_rgjj4"]
-[ext_resource type="PackedScene" uid="uid://cxfnfrde2ng2x" path="res://scenes/collectables/big_collectable.tscn" id="3_125mb"]
-[ext_resource type="PackedScene" uid="uid://dc0kv7mhsqe80" path="res://scenes/collectables/small_collectable.tscn" id="4_vll1x"]
+[ext_resource type="PackedScene" uid="uid://cxfnfrde2ng2x" path="res://scenes/collectables/tall_collectable.tscn" id="3_125mb"]
+[ext_resource type="PackedScene" uid="uid://dc0kv7mhsqe80" path="res://scenes/collectables/small_collectable_1.tscn" id="4_vll1x"]
 
 [node name="CollectableSpawner" type="Node2D"]
 script = ExtResource("1_i7vic")
@@ -11,3 +11,4 @@ collectable_scenes = Array[PackedScene]([ExtResource("2_rgjj4"), ExtResource("3_
 spawn_weights = Array[float]([1.0, 0.5, 3.0])
 spawn_interval = 1.5
 spawn_variance = 0.5
+spawn_height_range = 10.0

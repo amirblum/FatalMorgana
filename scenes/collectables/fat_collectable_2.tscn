@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgn0043apbcc1"]
+
+[ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectables/base_collectable.tscn" id="1_vd3wg"]
+[ext_resource type="Texture2D" uid="uid://cj11cyef0p672" path="res://sprites/AcacciaSilhouette.png" id="2_vd3wg"]
+
+[node name="Collectable" instance=ExtResource("1_vd3wg")]
+water_value = 5.0
+hp = 15
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2(0, -84)
+scale = Vector2(0.36914063, 0.3691406)
+texture = ExtResource("2_vd3wg")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-25, -188)
+shape = null
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
+position = Vector2(10, -45)
+scale = Vector2(0.48611113, 0.48611113)
+polygon = PackedVector2Array(53.48571, 98.74285, 30.857143, 20.571434, 92, -77, 335.31427, -146.05713, 67.88571, -253.02855, -94.62856, -273.59998, -384.68567, -143.99998, -108, -72, -49.371426, 20.571434, -74.05714, 98.74285)

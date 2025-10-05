@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dc0kv7mhsqe80"]
+[gd_scene load_steps=4 format=3 uid="uid://dc0kv7mhsqe80"]
 
 [ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectables/base_collectable.tscn" id="1_pgraa"]
+[ext_resource type="Texture2D" uid="uid://83oebdf1qo2u" path="res://sprites/DesertThymeSilhouette2.png" id="2_7u1qh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgraa"]
-size = Vector2(54, 54)
+size = Vector2(51, 62)
 
 [node name="Collectable" instance=ExtResource("1_pgraa")]
 water_value = 0.5
 hp = 1
 
 [node name="Sprite" parent="." index="0"]
-scale = Vector2(0.40625, 0.40625)
+position = Vector2(4, -28.999996)
+scale = Vector2(0.10546875, 0.105468765)
+texture = ExtResource("2_7u1qh")
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-1.5, -30)
 shape = SubResource("RectangleShape2D_pgraa")
