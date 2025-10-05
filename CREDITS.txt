@@ -1,9 +1,12 @@
 === Jam Credits ===
 
 Code: Amir Blum — MIT License
-Art: [List what you made yourself, and what you sourced]
+Art: 
+- Seamless desert background in parts (PWL)
+https://opengameart.org/content/seamless-desert-background-in-parts
+- Nano Banana Images
 Music/SFX: 
-https://opengameart.org/content/night-in-the-desert
+- https://opengameart.org/content/night-in-the-desert
 
 Unless otherwise noted, original art and audio in this project are licensed under
 Creative Commons Attribution 4.0 (CC BY 4.0).
