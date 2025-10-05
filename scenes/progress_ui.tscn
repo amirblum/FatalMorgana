@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvfvqg0nqw7cu"]
+
+[ext_resource type="Script" uid="uid://bvshxp2x7w1oe" path="res://scripts/progress_ui.gd" id="1_vjivj"]
+[ext_resource type="FontFile" uid="uid://bo2tk00jemcub" path="res://fonts/JosefinSans-VariableFont_wght.ttf" id="2_vjivj"]
+
+[node name="ProgressUI" type="Control"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("1_vjivj")
+
+[node name="ProgressLabel" type="Label" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 20.0
+offset_right = 335.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_vjivj")
+theme_override_font_sizes/font_size = 36
+text = "Distance: 3000/3000"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxdp0ygjeeag3"]
+[gd_scene load_steps=13 format=3 uid="uid://cxdp0ygjeeag3"]
 
 [ext_resource type="Script" uid="uid://d26tasx52icka" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://oyyukfogdh74" path="res://scenes/desert.tscn" id="2_tbgi4"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ucxwxhstfpq3" path="res://scenes/collectables/fat_collectable_1.tscn" id="7_eb6dy"]
 [ext_resource type="PackedScene" uid="uid://bgn0043apbcc1" path="res://scenes/collectables/fat_collectable_2.tscn" id="8_trceg"]
 [ext_resource type="PackedScene" uid="uid://cxfnfrde2ng2x" path="res://scenes/collectables/tall_collectable.tscn" id="9_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://cvfvqg0nqw7cu" path="res://scenes/progress_ui.tscn" id="10_eb6dy"]
 [ext_resource type="AudioStream" uid="uid://cknlpwxvyb6dx" path="res://sounds/night in the desert.mp3" id="11_ya4ey"]
 
 [node name="Main" type="Node2D"]
@@ -30,6 +31,8 @@ spawn_weights = Array[float]([3.0, 3.0, 1.0, 0.5, 0.5])
 position = Vector2(286, 439)
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressUI" parent="UI" instance=ExtResource("10_eb6dy")]
 
 [node name="WaterMeter" parent="UI" instance=ExtResource("4_o6xl0")]
 

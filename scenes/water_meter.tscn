@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8yl3nxc1yyf5"]
+[gd_scene load_steps=3 format=3 uid="uid://8yl3nxc1yyf5"]
 
 [ext_resource type="Script" uid="uid://baqqne7002r71" path="res://scripts/water_meter.gd" id="1_nwalk"]
+[ext_resource type="FontFile" uid="uid://bo2tk00jemcub" path="res://fonts/JosefinSans-VariableFont_wght.ttf" id="2_ochog"]
 
 [node name="WaterMeter" type="Control"]
 layout_mode = 3
@@ -13,6 +14,7 @@ grow_vertical = 0
 script = ExtResource("1_nwalk")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(0.41000003, 0.94100004, 1, 1)
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 1
 anchors_preset = 12
@@ -22,6 +24,7 @@ anchor_bottom = 1.0
 offset_top = -27.0
 grow_horizontal = 2
 grow_vertical = 0
+value = 34.99
 show_percentage = false
 
 [node name="WaterLabel" type="Label" parent="."]
@@ -29,8 +32,12 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
-offset_right = 117.0
-offset_bottom = -77.0
+offset_left = 5.0
+offset_top = -83.0
+offset_right = 428.0
+offset_bottom = -16.0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_ochog")
+theme_override_font_sizes/font_size = 36
 text = "Water: 100/100"
+vertical_alignment = 1
