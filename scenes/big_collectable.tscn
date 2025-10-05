@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/base_collectable.tscn" id="1_5oqcl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6l1w"]
-size = Vector2(59, 172)
+size = Vector2(73, 182)
 
 [node name="Collectable" instance=ExtResource("1_5oqcl")]
 water_value = 5.0
