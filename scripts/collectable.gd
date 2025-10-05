@@ -9,13 +9,13 @@ class_name Collectable
 @export var float_amplitude: float = 10.0
 @export var float_speed: float = 2.0
 @export var hp: int = 3
-@export var hover_scale_multiplier: float = 1.2
+@export var highlight_color: Color = Color(0.25, 0.25, 0.25)
 
 var collected: bool = false
 var current_hp: int = 0
 var time_alive: float = 0.0
 var base_y: float = 0.0
-var base_scale: Vector2 = Vector2.ONE
+var base_modulate: Color = Color.WHITE
 
 func _ready():
 	add_to_group("collectable")
@@ -23,8 +23,8 @@ func _ready():
 	# Initialize HP
 	current_hp = hp
 	
-	# Store base scale for hover effects
-	base_scale = sprite.scale
+	# Store base modulate for hover effects
+	base_modulate = sprite.modulate
 		
 	# Connect GameManager signals
 	GameManager.distance_updated.connect(_on_distance_updated)
@@ -69,16 +69,14 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 				take_damage()
 
 func _on_mouse_entered():
-	# Visual feedback: scale up when hovering
+	# Visual feedback: white outline when hovering
 	if not collected:
-		var tween = create_tween()
-		tween.tween_property(sprite, "scale", base_scale * hover_scale_multiplier, 0.1)
+		sprite.modulate = highlight_color
 
 func _on_mouse_exited():
-	# Return to base scale
+	# Return to normal color
 	if not collected:
-		var tween = create_tween()
-		tween.tween_property(sprite, "scale", base_scale, 0.1)
+		sprite.modulate = base_modulate
 
 func take_damage():
 	if collected:
@@ -116,7 +114,7 @@ func play_damage_animation():
 	
 	# Flash red briefly
 	tween.tween_property(sprite, "modulate", Color.RED, 0.1)
-	tween.tween_property(sprite, "modulate", Color.WHITE, 0.1).set_delay(0.1)
+	tween.tween_property(sprite, "modulate", highlight_color, 0.1).set_delay(0.1)
 	
 
 func play_collect_animation():
@@ -132,7 +130,7 @@ func play_collect_animation():
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.4)
 	
 	# Scale up and move up
-	tween.tween_property(sprite, "scale", Vector2(1.5, 1.5), 0.4)
+	tween.tween_property(sprite, "scale", Vector2(1.25, 1.25), 0.4)
 	tween.tween_property(sprite, "global_position:y", global_position.y - 50, 0.4)
 	
 	# Slight rotation for extra juice
