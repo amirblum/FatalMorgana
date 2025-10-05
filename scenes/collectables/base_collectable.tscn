@@ -24,7 +24,7 @@ damage_color = Color(0, 0.4333334, 1, 1)
 collect_sounds = Array[AudioStream]([ExtResource("2_mluv6"), ExtResource("3_7fpsk"), ExtResource("4_kgp1w")])
 
 [node name="Sprite" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
+modulate = Color(0.21960784, 0.2, 0.1882353, 1)
 material = SubResource("ShaderMaterial_0ixub")
 texture = ExtResource("2_px7bg")
 
