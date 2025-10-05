@@ -10,7 +10,7 @@ var bob_amount: float = 5.0
 var time: float = 0.0
 
 func _ready():
-	GameManager.water_changed.connect(_on_water_changed)
+	# GameManager.water_changed.connect(_on_water_changed)
 	
 	# Hide all upgrade visuals for now (we'll use them later)
 	if upgrade_visuals:
@@ -32,11 +32,11 @@ func _on_water_changed(new_water: float, max_water: float):
 	var water_ratio = new_water / max_water
 	
 	if water_ratio < 0.25:
-		sprite.modulate = Color(1.0, 0.7, 0.7)
+		sprite.modulate = Color(0.8, 0.2, 0.2)  # Dark red for low water
 	elif water_ratio < 0.5:
-		sprite.modulate = Color(1.0, 0.9, 0.8)
+		sprite.modulate = Color(0.6, 0.4, 0.2)  # Dark orange for medium water
 	else:
-		sprite.modulate = Color.WHITE
+		sprite.modulate = Color(0.2, 0.2, 0.2)  # Dark gray for good water
 
 func celebrate():
 	var tween = create_tween()
