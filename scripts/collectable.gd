@@ -53,8 +53,8 @@ func _process(delta: float):
 	time_alive += delta
 	
 	# Smooth floating animation
-	if not animation:
-		global_position.y = base_y + sin(time_alive * float_speed) * float_amplitude
+	#if not animation:
+		#global_position.y = base_y + sin(time_alive * float_speed) * float_amplitude
 	
 	# Despawn if off-screen (left side)
 	if global_position.x < -100:

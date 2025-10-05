@@ -4,7 +4,7 @@ extends Node2D
 @export var spawn_weights: Array[float] = []  # Optional weights for each collectable type
 @export var spawn_interval: float = 2.0
 @export var spawn_variance: float = 1.0
-@export var spawn_height_range: float = 300.0  # Vertical range for spawns
+@export var spawn_height_range: float = 150.0  # Vertical range for spawns
 @export var min_spawn_interval: float = 0.5  # Prevents too many at once
 
 var spawn_timer: float = 0.0
@@ -81,7 +81,7 @@ func spawn_collectable():
 	add_child(collectable)
 	
 	# Spawn position: right side of screen, random height
-	var spawn_x = screen_width + 50
+	var spawn_x = screen_width + 100
 	var spawn_y = global_position.y + randf_range(-spawn_height_range / 2, spawn_height_range / 2)
 	
 	# Keep within screen bounds with margin
