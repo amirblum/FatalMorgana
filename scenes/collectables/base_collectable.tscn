@@ -1,18 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://dhcoh7xlhkogy"]
 
-[ext_resource type="Script" uid="uid://cua17701k3jfd" path="res://scripts/collectable.gd" id="1_llfh3"]
-[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_dnya4"]
+[ext_resource type="Script" uid="uid://cua17701k3jfd" path="res://scripts/collectable.gd" id="1_5axqd"]
+[ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_px7bg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjeyi"]
 size = Vector2(130, 130)
 
 [node name="Collectable" type="Area2D"]
-script = ExtResource("1_llfh3")
+script = ExtResource("1_5axqd")
 water_value = 3.0
 hp = 5
+highlight_color = Color(0.3, 0.3, 0.3, 1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_dnya4")
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("2_px7bg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pjeyi")

@@ -19,6 +19,7 @@ gradient = SubResource("Gradient_e10tr")
 script = ExtResource("1_ql6k1")
 
 [node name="CaravanSprite" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
 position = Vector2(13.999998, -77.99999)
 scale = Vector2(0.2871094, 0.2871094)
 texture = ExtResource("2_05eb2")
