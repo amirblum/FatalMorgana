@@ -18,3 +18,11 @@ shape = null
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2"]
 polygon = PackedVector2Array(149, -1, 37, -35, 92, -77, 369, -129, 74, -283, -62, -289, -378, -119, -108, -72, -55, -33, -179, -1)
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -42.0
+offset_top = -318.0
+offset_right = 18.0
+offset_bottom = -298.0
+grow_horizontal = 2
+grow_vertical = 2

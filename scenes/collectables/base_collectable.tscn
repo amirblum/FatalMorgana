@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhcoh7xlhkogy"]
+[gd_scene load_steps=10 format=3 uid="uid://dhcoh7xlhkogy"]
 
 [ext_resource type="Script" uid="uid://cua17701k3jfd" path="res://scripts/collectable.gd" id="1_5axqd"]
+[ext_resource type="PackedScene" uid="uid://b8x7y9z2a1b3c" path="res://scenes/health_bar.tscn" id="2_health_bar"]
 [ext_resource type="Shader" uid="uid://wxkp4aw8qwff" path="res://shaders/outline.gdshader" id="2_d7g84"]
 [ext_resource type="AudioStream" uid="uid://dauthb2lxkluc" path="res://sounds/water-drop-1.wav" id="2_mluv6"]
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_px7bg"]
@@ -41,3 +42,6 @@ initial_velocity_max = 100.0
 color = Color(0.16078432, 0.5686275, 0.7294118, 1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="HealthBar" parent="." instance=ExtResource("2_health_bar")]
+position = Vector2(0, -100)

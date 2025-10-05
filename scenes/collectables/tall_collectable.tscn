@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cxfnfrde2ng2x"]
 
-[ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectables/base_collectable.tscn" id="1_5oqcl"]
-[ext_resource type="Texture2D" uid="uid://blfkv1850yww6" path="res://sprites/DatePalmSilhoutte.png" id="2_64fdb"]
+[ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectables/base_collectable.tscn" id="1_tqada"]
+[ext_resource type="Texture2D" uid="uid://blfkv1850yww6" path="res://sprites/DatePalmSilhoutte.png" id="2_jpjgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6l1w"]
 size = Vector2(248, 175)
@@ -9,14 +9,14 @@ size = Vector2(248, 175)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64fdb"]
 size = Vector2(44, 168)
 
-[node name="Collectable" instance=ExtResource("1_5oqcl")]
+[node name="Collectable" instance=ExtResource("1_tqada")]
 water_value = 5.0
 hp = 15
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2(-1, -167)
 scale = Vector2(0.39257813, 0.39257813)
-texture = ExtResource("2_64fdb")
+texture = ExtResource("2_jpjgt")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-1, -251.5)
@@ -25,3 +25,11 @@ shape = SubResource("RectangleShape2D_l6l1w")
 [node name="TrunkCollision" type="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_64fdb")
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -36.0
+offset_top = -366.0
+offset_right = 24.0
+offset_bottom = -346.0
+grow_horizontal = 2
+grow_vertical = 2

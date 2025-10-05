@@ -5,6 +5,7 @@ class_name Collectable
 @onready var animation = $AnimationPlayer if has_node("AnimationPlayer") else null
 @onready var particles = $CollectParticles if has_node("CollectParticles") else null
 @onready var audio_player = $AudioStreamPlayer2D
+@onready var health_bar = $HealthBar
 
 @export var water_value: float = 5.0
 @export var float_amplitude: float = 10.0
@@ -30,6 +31,11 @@ func _ready():
 	
 	# Initialize HP
 	current_hp = hp
+	
+	# Initialize health bar
+	if health_bar:
+		health_bar.set_max_health(hp)
+		health_bar.set_current_health(current_hp)
 	
 	# Create a unique material instance for this collectable
 	_create_unique_material()
@@ -108,6 +114,10 @@ func take_damage():
 	
 	current_hp -= 1
 	print("Collectable took damage! HP: ", current_hp)
+	
+	# Update health bar
+	if health_bar:
+		health_bar.set_current_health(current_hp)
 	
 	# Visual feedback for taking damage
 	play_damage_animation()
