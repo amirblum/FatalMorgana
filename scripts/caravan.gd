@@ -5,12 +5,16 @@ class_name Caravan
 @onready var upgrade_visuals = $UpgradeVisuals if has_node("UpgradeVisuals") else null
 @onready var animation_player = $AnimationPlayer if has_node("AnimationPlayer") else null
 
-var bob_speed: float = 2.0
-var bob_amount: float = 5.0
+@export var bob_speed: float = 2.0
+@export var bob_amount: float = 5.0
 var time: float = 0.0
+var initial_y: float = 0.0
 
 func _ready():
 	# GameManager.water_changed.connect(_on_water_changed)
+	
+	# Store the initial Y position for bobbing
+	initial_y = sprite.position.y
 	
 	# Hide all upgrade visuals for now (we'll use them later)
 	if upgrade_visuals:
@@ -26,7 +30,7 @@ func _process(delta: float):
 	
 	if not animation_player or not animation_player.is_playing():
 		time += delta
-		sprite.position.y = sin(time * bob_speed) * bob_amount
+		sprite.position.y = initial_y + sin(time * bob_speed) * bob_amount
 
 func _on_water_changed(new_water: float, max_water: float):
 	var water_ratio = new_water / max_water

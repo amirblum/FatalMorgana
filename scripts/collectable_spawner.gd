@@ -80,8 +80,14 @@ func spawn_collectable():
 	var collectable = collectable_scene.instantiate()
 	add_child(collectable)
 	
-	# Spawn position: right side of screen, random height
-	var spawn_x = screen_width + 100
+	# Get the collectable's collision shape to determine its width
+	var collision_shape = collectable.get_node("CollisionShape2D")
+	var collectable_width = 130.0  # Default fallback
+	if collision_shape and collision_shape.shape:
+		collectable_width = collision_shape.shape.size.x
+	
+	# Spawn position: right side of screen with offset equal to half width, random height
+	var spawn_x = screen_width + (collectable_width / 2) + 50  # Extra 50px margin
 	var spawn_y = global_position.y + randf_range(-spawn_height_range / 2, spawn_height_range / 2)
 	
 	# Keep within screen bounds with margin
@@ -113,7 +119,13 @@ func spawn_pattern_wave():
 		var collectable = collectable_scene.instantiate()
 		add_child(collectable)
 		
-		var spawn_x = screen_width + 50 + (i * 80)
+		# Get the collectable's collision shape to determine its width
+		var collision_shape = collectable.get_node("CollisionShape2D")
+		var collectable_width = 130.0  # Default fallback
+		if collision_shape and collision_shape.shape:
+			collectable_width = collision_shape.shape.size.x
+		
+		var spawn_x = screen_width + (collectable_width / 2) + 50 + (i * 80)
 		var spawn_y = (screen_height / 2) + sin(i * 0.5) * 100
 		
 		collectable.global_position = Vector2(spawn_x, spawn_y)
