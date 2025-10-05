@@ -9,13 +9,18 @@ class_name Collectable
 @export var float_amplitude: float = 10.0
 @export var float_speed: float = 2.0
 @export var hp: int = 3
-@export var highlight_color: Color = Color(0.25, 0.25, 0.25)
+@export var highlight_color: Color = Color.YELLOW
+@export var outline_size: float = 2.0
 
 var collected: bool = false
 var current_hp: int = 0
 var time_alive: float = 0.0
 var base_y: float = 0.0
-var base_modulate: Color = Color.WHITE
+var base_outline_color: Color = Color(0, 0, 0, 0)  # Transparent (invisible)
+var base_outline_size: float = 0.0  # No outline by default
+
+var mat: ShaderMaterial
+var is_mouse_hovering: bool = false
 
 func _ready():
 	add_to_group("collectable")
@@ -23,8 +28,12 @@ func _ready():
 	# Initialize HP
 	current_hp = hp
 	
-	# Store base modulate for hover effects
-	base_modulate = sprite.modulate
+	# Create a unique material instance for this collectable
+	_create_unique_material()
+	
+	# Initialize outline to be invisible
+	_set_outline_color(base_outline_color)
+	_set_outline_size(base_outline_size)
 		
 	# Connect GameManager signals
 	GameManager.distance_updated.connect(_on_distance_updated)
@@ -69,14 +78,18 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 				take_damage()
 
 func _on_mouse_entered():
-	# Visual feedback: white outline when hovering
+	# Visual feedback: outline when hovering
 	if not collected:
-		sprite.modulate = highlight_color
+		is_mouse_hovering = true
+		_set_outline_color(highlight_color)
+		_set_outline_size(outline_size)
 
 func _on_mouse_exited():
-	# Return to normal color
+	# Return to normal outline (invisible)
 	if not collected:
-		sprite.modulate = base_modulate
+		is_mouse_hovering = false
+		_set_outline_color(base_outline_color)
+		_set_outline_size(base_outline_size)
 
 func take_damage():
 	if collected:
@@ -112,10 +125,35 @@ func play_damage_animation():
 	var tween = create_tween()
 	tween.set_parallel(true)
 	
-	# Flash red briefly
-	tween.tween_property(sprite, "modulate", Color.RED, 0.1)
-	tween.tween_property(sprite, "modulate", highlight_color, 0.1).set_delay(0.1)
+	# Flash red outline briefly
+	tween.tween_method(_set_outline_color, Color.RED, base_outline_color, 0.2)
+	tween.tween_method(_set_outline_size, outline_size, base_outline_size, 0.2)
 	
+	# After damage animation, restore hover state if mouse is still hovering
+	tween.tween_callback(_restore_hover_state_if_needed).set_delay(0.2)
+
+func _create_unique_material():
+	# Create a unique material instance for this collectable
+	if not sprite.material:
+		push_error("Collectable sprite has no material assigned! Please assign an outline shader material to the sprite.")
+		return
+	
+	mat = sprite.material.duplicate()
+	sprite.material = mat
+
+func _set_outline_color(color: Color):
+	if mat:
+		mat.set("shader_parameter/outline_color", color)
+
+func _set_outline_size(size: float):
+	if mat:
+		mat.set("shader_parameter/outline_size", size)
+
+func _restore_hover_state_if_needed():
+	# Restore hover state if mouse is still hovering after damage animation
+	if is_mouse_hovering and not collected:
+		_set_outline_color(highlight_color)
+		_set_outline_size(outline_size)
 
 func play_collect_animation():
 	# Emit particles
@@ -128,6 +166,10 @@ func play_collect_animation():
 	
 	# Fade out
 	tween.tween_property(sprite, "modulate:a", 0.0, 0.4)
+	
+	# Fade out outline
+	tween.tween_method(_set_outline_color, highlight_color, base_outline_color, 0.4)
+	tween.tween_method(_set_outline_size, outline_size, base_outline_size, 0.4)
 	
 	# Scale up and move up
 	tween.tween_property(sprite, "scale", Vector2(1.25, 1.25), 0.4)

@@ -1,7 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cejgnughwon1u"]
+[gd_scene load_steps=9 format=3 uid="uid://cejgnughwon1u"]
 
 [ext_resource type="Script" uid="uid://djyqo1ie7d0p3" path="res://scripts/caravan.gd" id="1_ql6k1"]
 [ext_resource type="Texture2D" uid="uid://ck12vpejv124v" path="res://sprites/CamelSilhouette.png" id="2_05eb2"]
+[ext_resource type="Shader" uid="uid://wxkp4aw8qwff" path="res://shaders/outline.gdshader" id="2_aywv8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xf0bo"]
+shader = ExtResource("2_aywv8")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 4.0
 
 [sub_resource type="Gradient" id="Gradient_xf0bo"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -20,6 +26,7 @@ script = ExtResource("1_ql6k1")
 
 [node name="CaravanSprite" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_xf0bo")
 position = Vector2(13.999998, -77.99999)
 scale = Vector2(0.2871094, 0.2871094)
 texture = ExtResource("2_05eb2")

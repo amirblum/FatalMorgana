@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvcyctdbtg5dl"]
+[gd_scene load_steps=6 format=3 uid="uid://dvcyctdbtg5dl"]
 
 [ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectables/base_collectable.tscn" id="1_o4sme"]
+[ext_resource type="Shader" uid="uid://wxkp4aw8qwff" path="res://shaders/outline.gdshader" id="2_aexht"]
 [ext_resource type="Texture2D" uid="uid://baxc63o53m3s6" path="res://sprites/DesertThymeSilhouette1.png" id="2_o4sme"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ca1f"]
+shader = ExtResource("2_aexht")
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/outline_size = 1.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgraa"]
 size = Vector2(73, 62)
@@ -11,10 +17,12 @@ water_value = 0.5
 hp = 1
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2(-2, -28.999996)
-scale = Vector2(0.10546875, 0.105468765)
+material = SubResource("ShaderMaterial_0ca1f")
+position = Vector2(-3.7972107, -49.79719)
+scale = Vector2(0.18398982, 0.18398985)
 texture = ExtResource("2_o4sme")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(-2.5, -30)
+position = Vector2(-4.2972107, -50.797195)
+scale = Vector2(1.7444961, 1.7444961)
 shape = SubResource("RectangleShape2D_pgraa")

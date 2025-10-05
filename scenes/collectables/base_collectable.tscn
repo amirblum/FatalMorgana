@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhcoh7xlhkogy"]
+[gd_scene load_steps=6 format=3 uid="uid://dhcoh7xlhkogy"]
 
 [ext_resource type="Script" uid="uid://cua17701k3jfd" path="res://scripts/collectable.gd" id="1_5axqd"]
+[ext_resource type="Shader" uid="uid://wxkp4aw8qwff" path="res://shaders/outline.gdshader" id="2_d7g84"]
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_px7bg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ixub"]
+shader = ExtResource("2_d7g84")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_size = 1.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjeyi"]
 size = Vector2(130, 130)
@@ -10,10 +16,11 @@ size = Vector2(130, 130)
 script = ExtResource("1_5axqd")
 water_value = 3.0
 hp = 5
-highlight_color = Color(0.3, 0.3, 0.3, 1)
+highlight_color = Color(0.7315609, 0.6266706, 0, 1)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_0ixub")
 texture = ExtResource("2_px7bg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
