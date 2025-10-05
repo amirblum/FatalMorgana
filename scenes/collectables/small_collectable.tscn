@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dc0kv7mhsqe80"]
 
-[ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/base_collectable.tscn" id="1_pgraa"]
+[ext_resource type="PackedScene" uid="uid://dhcoh7xlhkogy" path="res://scenes/collectables/base_collectable.tscn" id="1_pgraa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgraa"]
 size = Vector2(54, 54)
