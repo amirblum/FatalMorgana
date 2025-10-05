@@ -14,7 +14,7 @@ var is_paused: bool = false
 # ===== WATER SYSTEM =====
 var current_water: float = 50.0
 var max_water: float = 20.0
-var water_drain_rate: float = 1.0  # Water lost per second
+var water_drain_rate: float = 1.25  # Water lost per second
 
 # ===== PROGRESSION =====
 var progression_speed: float = 50.0
@@ -28,6 +28,18 @@ func _ready():
 	print("GameManager initialized")
 
 # ===== GAME FLOW =====
+func initialize_ui():
+	print("Initializing UI...")
+	
+	# Reset run state
+	distance_traveled = 0.0
+	current_water = max_water
+	visual_stage = 0
+	
+	# Emit initial signals to update UI
+	water_changed.emit(current_water, max_water)
+	distance_updated.emit(0.0, distance_traveled)
+
 func start_new_run():
 	print("Starting new run...")
 	

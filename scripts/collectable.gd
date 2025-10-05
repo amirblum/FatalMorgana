@@ -73,6 +73,10 @@ func _process(delta: float):
 		queue_free()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
+	# Only allow interaction if game is running
+	if not GameManager.is_running:
+		return
+		
 	# Detect mouse click
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
@@ -81,6 +85,10 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int):
 				take_damage()
 
 func _on_mouse_entered():
+	# Only show hover effects if game is running
+	if not GameManager.is_running:
+		return
+		
 	# Visual feedback: outline when hovering
 	if not collected:
 		is_mouse_hovering = true
@@ -95,7 +103,7 @@ func _on_mouse_exited():
 		_set_outline_size(base_outline_size)
 
 func take_damage():
-	if collected:
+	if collected or not GameManager.is_running:
 		return
 	
 	current_hp -= 1
@@ -109,7 +117,7 @@ func take_damage():
 		collect()
 
 func collect():
-	if collected:
+	if collected or not GameManager.is_running:
 		return
 	
 	collected = true

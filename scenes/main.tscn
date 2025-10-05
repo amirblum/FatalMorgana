@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxdp0ygjeeag3"]
+[gd_scene load_steps=15 format=3 uid="uid://cxdp0ygjeeag3"]
 
 [ext_resource type="Script" uid="uid://d26tasx52icka" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://oyyukfogdh74" path="res://scenes/desert.tscn" id="2_tbgi4"]
@@ -11,7 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bgn0043apbcc1" path="res://scenes/collectables/fat_collectable_2.tscn" id="8_trceg"]
 [ext_resource type="PackedScene" uid="uid://cxfnfrde2ng2x" path="res://scenes/collectables/tall_collectable.tscn" id="9_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cvfvqg0nqw7cu" path="res://scenes/progress_ui.tscn" id="10_eb6dy"]
-[ext_resource type="AudioStream" uid="uid://cknlpwxvyb6dx" path="res://sounds/night in the desert.mp3" id="11_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://b8x7k2nan4p5q" path="res://scenes/game_over_ui.tscn" id="11_gameover"]
+[ext_resource type="AudioStream" uid="uid://cknlpwxvyb6dx" path="res://sounds/night in the desert.mp3" id="12_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://dps4v28qlsarw" path="res://scenes/startup_message.tscn" id="13_startup"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jyhfs")
@@ -36,6 +38,10 @@ position = Vector2(286, 439)
 
 [node name="WaterMeter" parent="UI" instance=ExtResource("4_o6xl0")]
 
+[node name="GameOverUI" parent="UI" instance=ExtResource("11_gameover")]
+
+[node name="StartupMessage" parent="UI" instance=ExtResource("13_startup")]
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_ya4ey")
+stream = ExtResource("12_ya4ey")
 autoplay = true
