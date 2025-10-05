@@ -4,6 +4,7 @@ class_name Collectable
 @onready var sprite = $Sprite
 @onready var animation = $AnimationPlayer if has_node("AnimationPlayer") else null
 @onready var particles = $CollectParticles if has_node("CollectParticles") else null
+@onready var audio_player = $AudioStreamPlayer2D
 
 @export var water_value: float = 5.0
 @export var float_amplitude: float = 10.0
@@ -12,6 +13,7 @@ class_name Collectable
 @export var highlight_color: Color = Color.YELLOW
 @export var damage_color: Color = Color.RED
 @export var outline_size: float = 2.0
+@export var collect_sounds: Array[AudioStream] = []
 
 var collected: bool = false
 var current_hp: int = 0
@@ -118,8 +120,8 @@ func collect():
 	# Visual feedback
 	play_collect_animation()
 	
-	# Play sound effect (if you have one)
-	# $AudioStreamPlayer2D.play()
+	# Play random sound effect
+	play_random_collect_sound()
 
 func play_damage_animation():
 	# Quick flash effect when taking damage
@@ -181,3 +183,16 @@ func play_collect_animation():
 	
 	# Destroy after animation
 	tween.tween_callback(queue_free).set_delay(0.4)
+
+func play_random_collect_sound():
+	# Check if we have any sounds configured
+	if collect_sounds.is_empty():
+		print("No collect sounds configured in inspector")
+		return
+	
+	# Select a random sound from the array
+	var random_sound = collect_sounds[randi() % collect_sounds.size()]
+	
+	# Set the sound and play it
+	audio_player.stream = random_sound
+	audio_player.play()

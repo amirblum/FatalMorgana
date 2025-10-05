@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhcoh7xlhkogy"]
+[gd_scene load_steps=9 format=3 uid="uid://dhcoh7xlhkogy"]
 
 [ext_resource type="Script" uid="uid://cua17701k3jfd" path="res://scripts/collectable.gd" id="1_5axqd"]
 [ext_resource type="Shader" uid="uid://wxkp4aw8qwff" path="res://shaders/outline.gdshader" id="2_d7g84"]
+[ext_resource type="AudioStream" uid="uid://dauthb2lxkluc" path="res://sounds/water-drop-1.wav" id="2_mluv6"]
 [ext_resource type="Texture2D" uid="uid://4xv7ag7w05ot" path="res://icon.svg" id="2_px7bg"]
+[ext_resource type="AudioStream" uid="uid://70yalv4p6m2i" path="res://sounds/water-drop-2.wav" id="3_7fpsk"]
+[ext_resource type="AudioStream" uid="uid://4wkexv5h1xd0" path="res://sounds/water-drop-3.wav" id="4_kgp1w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ixub"]
 shader = ExtResource("2_d7g84")
@@ -18,6 +21,7 @@ water_value = 3.0
 hp = 5
 highlight_color = Color(1, 0.85, 0, 1)
 damage_color = Color(0, 0.4333334, 1, 1)
+collect_sounds = Array[AudioStream]([ExtResource("2_mluv6"), ExtResource("3_7fpsk"), ExtResource("4_kgp1w")])
 
 [node name="Sprite" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -35,3 +39,5 @@ direction = Vector2(0, -1)
 initial_velocity_min = 50.0
 initial_velocity_max = 100.0
 color = Color(0.16078432, 0.5686275, 0.7294118, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
